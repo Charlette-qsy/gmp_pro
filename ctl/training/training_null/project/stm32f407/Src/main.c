@@ -86,6 +86,9 @@ static void MX_TIM4_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_TIM8_Init(void);
 static void MX_TIM3_Init(void);
+
+
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -162,6 +165,8 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
+
+
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};

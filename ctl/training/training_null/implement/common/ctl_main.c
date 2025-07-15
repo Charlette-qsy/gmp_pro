@@ -66,7 +66,7 @@ void ctl_init()
 #else
     // Voltage loop
     ctl_boost_ctrl_voltage_mode(&boost_ctrl);
-    ctl_set_boost_ctrl_voltage(&boost_ctrl, float2ctrl(0.8));
+    ctl_set_boost_ctrl_voltage(&boost_ctrl, float2ctrl(0.3));
 #endif // BUILD_LEVEL
 
     ctl_disable_boost_ctrl_output(&boost_ctrl);

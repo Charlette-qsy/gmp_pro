@@ -24,7 +24,7 @@
 #define CTRL_ADC_VOLTAGE_REF (2.5)
 
 // Voltage gain
-#define CTRL_VOLTAGE_SENSOR_GAIN (3.3/203.3)
+#define CTRL_VOLTAGE_SENSOR_GAIN (0.0109)
 
 // Voltage Bias, V
 #define CTRL_VOLTAGE_SENSOR_BIAS (0.9966)
