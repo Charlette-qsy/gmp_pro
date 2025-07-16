@@ -242,7 +242,7 @@ void ctl_boost_ctrl_current_mode(boost_ctrl_t *boost)
     boost->flag_enable_current_ctrl = 1;
 
     // enable voltage controller
-    boost->flag_enable_voltage_ctrl = 0;
+    boost->flag_enable_voltage_ctrl = 1;
 }
 
 // Set motor target current.
@@ -269,10 +269,10 @@ void ctl_boost_ctrl_openloop_mode(boost_ctrl_t *boost)
     // boost->flag_enable_output = 1;
 
     // enable current controller
-    boost->flag_enable_current_ctrl = 0;
+    boost->flag_enable_current_ctrl = 1;
 
     // enable voltage controller
-    boost->flag_enable_voltage_ctrl = 0;
+    boost->flag_enable_voltage_ctrl = 1;
 }
 
 // Set motor target Voltage (Duty).
