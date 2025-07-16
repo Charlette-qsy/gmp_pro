@@ -24,9 +24,9 @@
 
 #include <ctl\component\digital_power\basic/boost.h>
 
-#include <xplt.peripheral.h>
-
 #include <ctl/component/intrinsic/continuous/continuous_pid.h>
+
+#include <xplt.peripheral.h>
 
 #ifndef _FILE_CTL_MAIN_H_
 #define _FILE_CTL_MAIN_H_
@@ -67,13 +67,17 @@ extern fast_gt flag_enable_adc_calibrator;
 extern fast_gt index_adc_calibrator;
 
 extern pid_regular_t voltage_loop;
+extern pid_regular_t current_loop;
 extern ptr_adc_channel_t uc;
+extern ptr_adc_channel_t il;
 // Boost Controller Suite
 extern boost_ctrl_t boost_ctrl;
+extern ctrl_gt current_ref;
+extern ctrl_gt voltage_ref;
 
 //extern pid_regular_t current_pid, voltage_pid;
 //
-//extern ctrl_gt pwm_out_pu;
+extern ctrl_gt pwm_out_pu;
 //
 //extern ptr_adc_channel_t uin;
 //extern ptr_adc_channel_t uout;
@@ -95,15 +99,19 @@ extern boost_ctrl_t boost_ctrl;
 GMP_STATIC_INLINE
 void ctl_dispatch(void)
 {
-    //ctrl_gt current_ref = ctl_step_pid_ser(&voltage_pid, float2ctrl(0.8) - uout.control_port.value);
-    //pwm_out_pu = float2ctrl(1) - ctl_step_pid_ser(&current_pid, current_ref - idc.control_port.value);
-
+   // ctrl_gt current_ref = ctl_step_pid_ser(&voltage_pid, float2ctrl(0.3) - uout.control_port.value);
+    
+   //voltage
+   //pwm_out_pu = float2ctrl(1) - ctl_step_pid_ser(&voltage_loop, float2ctrl(0.3) - uc.control_port.value);
+    
+    //current+voltage
+   current_ref = ctl_step_pid_ser(&voltage_loop, voltage_ref - uc.control_port.value);
+   pwm_out_pu = float2ctrl(1) - ctl_step_pid_ser(&current_loop, current_ref - il.control_port.value);
 
     ////pwm_out_pu = float2ctrl(1) - ctl_step_pid_ser(&current_pid, idc.control_port.value - current_ref);
     /// 
-    ctl_step_pid_ser(&voltage_loop, float2ctrl(0.3) - uc.control_port.value);
-
-    ctl_step_boost_ctrl(&boost_ctrl);
+   // ctl_step_pid_ser(&voltage_loop, float2ctrl(0.3) - uc.control_port.value);
+    //ctl_step_boost_ctrl(&boost_ctrl);
 
 }
 

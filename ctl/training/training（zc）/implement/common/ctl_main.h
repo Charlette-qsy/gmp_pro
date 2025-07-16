@@ -24,9 +24,9 @@
 
 #include <ctl\component\digital_power\basic/boost.h>
 
-#include <xplt.peripheral.h>
-
 #include <ctl/component/intrinsic/continuous/continuous_pid.h>
+
+#include <xplt.peripheral.h>
 
 #ifndef _FILE_CTL_MAIN_H_
 #define _FILE_CTL_MAIN_H_
@@ -67,7 +67,9 @@ extern fast_gt flag_enable_adc_calibrator;
 extern fast_gt index_adc_calibrator;
 
 extern pid_regular_t voltage_loop;
+extern pid_regular_t current_discharge_reference;
 extern ptr_adc_channel_t uc;
+extern ptr_adc_channel_t il;
 // Boost Controller Suite
 extern boost_ctrl_t boost_ctrl;
 
@@ -101,8 +103,11 @@ void ctl_dispatch(void)
 
     ////pwm_out_pu = float2ctrl(1) - ctl_step_pid_ser(&current_pid, idc.control_port.value - current_ref);
     /// 
-    ctl_step_pid_ser(&voltage_loop, float2ctrl(0.3) - uc.control_port.value);
 
+    ctl_step_pid_ser(&voltage_loop, float2ctrl(0.24) - uc.control_port.value);
+    ctl_step_pid_ser(&current_discharge_reference, voltage_loop.out - il.control_port.value);
+    //ctl_step_pid_ser(&current_charge_reference, -float2ctrl(0.2) - il.control_port.value);
+    //ctl_step_pid_ser(&voltage_1, current_charge_reference.out - uin.control_port.value);
     ctl_step_boost_ctrl(&boost_ctrl);
 
 }
