@@ -13,7 +13,7 @@
 
 // user main header
 #include "user_main.h"
-
+#include "ctl_main.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -61,6 +61,8 @@ pwm_channel_t pwm_out;
 
 // ADC result
 uint32_t adc_results[8];
+int count = 0;
+
 
 // ADC RESULT INDEX
 typedef enum _tag_adc_result_nameplate
@@ -256,6 +258,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     // if (hadc == &hadc2)
     if (htim == &htim1)
     {
-        gmp_base_ctl_step();
+        count++;
+        if (count == 5000)
+        {
+            flag_enable_system = 1;
+            count = 0;
+        }
+
+
+		gmp_base_ctl_step();
     }
 }

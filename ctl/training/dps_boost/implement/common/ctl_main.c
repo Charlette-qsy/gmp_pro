@@ -32,8 +32,9 @@ boost_ctrl_t boost_ctrl;
 pid_regular_t voltage_loop;
 pid_regular_t current_loop;
 ctrl_gt current_ref;
-ctrl_gt voltage_ref;
-//
+ctrl_gt voltage_ref = float2ctrl(0.3);
+
+    //
 adc_bias_calibrator_t adc_calibrator;
 fast_gt flag_enable_adc_calibrator = 0;
 fast_gt index_adc_calibrator = 0;
@@ -118,6 +119,8 @@ void ctl_mainloop(void)
     //{
     //    ctl_disable_output();
     //}
+
+   
 
     return;
 }

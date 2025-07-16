@@ -74,6 +74,7 @@ extern ptr_adc_channel_t il;
 extern boost_ctrl_t boost_ctrl;
 extern ctrl_gt current_ref;
 extern ctrl_gt voltage_ref;
+extern volatile fast_gt flag_enable_system;
 
 //extern pid_regular_t current_pid, voltage_pid;
 //
