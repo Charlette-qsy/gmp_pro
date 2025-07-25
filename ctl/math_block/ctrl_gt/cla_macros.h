@@ -71,6 +71,7 @@ float multiple_static_inline(float A, float B)
 
 // Type conversion function
 #define float2ctrl(x) ((float32_t)(x))
+#define ctrl2float(x) ((float32_t)(x))
 #define int2ctrl(x)   ((float32_t)(x))
 #define ctrl2int(x)   ((int)(x))
 #define ctrl_mod_1(x) ((float32_t)(((float32_t)(x)) - ((int32_t)(x))))
@@ -81,6 +82,8 @@ float multiple_static_inline(float A, float B)
 #define ctl_mul(A, B)        ((float)((float)(A) * (B)))
 #define ctl_div(A, B)        ((float32_t)(__divf32((A), (B))))
 #define ctl_sat(A, Pos, Neg) saturation_macro((A), (Pos), (Neg))
+#define ctl_abs(A)           abs_static_inline(A)
+
 
 // #define pwm_mpy(CTRL_RESULT, PWM_SAT) ()
 
