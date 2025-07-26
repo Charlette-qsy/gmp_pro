@@ -11,7 +11,7 @@ extern "C"
 
 // You may enable this macro to enter debug mode.
 // Duty of Buck will not calculated by Uin.
-#define CTL_BUCK_CTRL_OUTPUT_WITHOUT_UIN
+//#define CTL_BUCK_CTRL_OUTPUT_WITHOUT_UIN
 
 // Boost Controller
 typedef struct _tag_buck_ctrl_type
@@ -101,6 +101,8 @@ void ctl_init_buck_ctrl(
     parameter_gt i_kp, parameter_gt i_Ti, parameter_gt i_Td,
     // valid uin range
     parameter_gt uin_min, parameter_gt uin_max,
+    // input filter cut frequency
+    parameter_gt fc,
     // Controller frequency, Hz
     parameter_gt fs);
 
@@ -221,6 +223,12 @@ GMP_STATIC_INLINE
 void ctl_disable_buck_ctrl(buck_ctrl_t *buck)
 {
     buck->flag_enable_system = 0;
+}
+
+GMP_STATIC_INLINE
+ctrl_gt ctl_get_buck_ctrl_modulation(buck_ctrl_t* buck)
+{
+    return buck->pwm_out_pu;
 }
 
 #ifdef __cplusplus

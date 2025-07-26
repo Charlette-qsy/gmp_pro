@@ -27,7 +27,7 @@ sinv_ctrl_t sinv_ctrl;
 ctl_pid_t current_outer;
 ctrl_gt ig_rms_ref = float2ctrl(0.1);
 
-// enable motor running
+// enable controller
 #if !defined SPECIFY_PC_ENVIRONMENT
 volatile fast_gt flag_system_enable = 0;
 #else
@@ -35,7 +35,6 @@ volatile fast_gt flag_system_enable = 1;
 #endif // SPECIFY_PC_ENVIRONMENT
 
 volatile fast_gt flag_system_running = 0;
-
 volatile fast_gt flag_error = 0;
 
 // CTL initialize routine
@@ -95,14 +94,20 @@ void ctl_init()
 #endif // BUILD_LEVEL
 
     // harmonic controller parameters
-    init.harm_ctrl_kr_3 = 1;
-    init.harm_ctrl_cut_freq_3 = 5.0f;
-    init.harm_ctrl_kr_5 = 3;
-    init.harm_ctrl_cut_freq_5 = 5.0f;
-    init.harm_ctrl_kr_7 = 3;
-    init.harm_ctrl_cut_freq_7 = 5.0f;
-    init.harm_ctrl_kr_9 = 6;
-    init.harm_ctrl_cut_freq_9 = 5.0f;
+    init.harm_ctrl_kr_3 = 40;
+    init.harm_ctrl_cut_freq_3 = 1.0f;
+    init.harm_ctrl_kr_5 = 10;
+    init.harm_ctrl_cut_freq_5 = 1.0f;
+    init.harm_ctrl_kr_7 = 30;
+    init.harm_ctrl_cut_freq_7 = 1.0f;
+    init.harm_ctrl_kr_9 = 10;
+    init.harm_ctrl_cut_freq_9 = 1.0f;
+    init.harm_ctrl_kr_11 = 15;
+    init.harm_ctrl_cut_freq_11 = 1.0f;
+    init.harm_ctrl_kr_13 = 20;
+    init.harm_ctrl_cut_freq_13 = 1.0f;
+    init.harm_ctrl_kr_15 = -3;
+    init.harm_ctrl_cut_freq_15 = 1.0f;
 
     // adc input filter cut frequency
     init.adc_filter_fc = 1000.0;

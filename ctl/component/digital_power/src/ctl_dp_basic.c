@@ -13,10 +13,16 @@ void ctl_init_buck_ctrl(
     parameter_gt i_kp, parameter_gt i_Ti, parameter_gt i_Td,
     // valid uin range
     parameter_gt uin_min, parameter_gt uin_max,
+    // input filter cut frequency
+    parameter_gt fc,
     // Controller frequency, Hz
     parameter_gt fs)
 {
-    ctl_disable_buck_ctrl(&buck);
+    ctl_disable_buck_ctrl(buck);
+
+    ctl_init_lp_filter(&buck->lpf_il, fs, fc);
+    ctl_init_lp_filter(&buck->lpf_ui, fs, fc);
+    ctl_init_lp_filter(&buck->lpf_uo, fs, fc);
 
     ctl_init_saturation(&buck->modulation_saturation, uin_min, uin_max);
     ctl_init_pid_ser(&buck->current_pid, i_kp, i_Ti, i_Td, fs);
@@ -51,12 +57,15 @@ void ctl_init_boost_ctrl(
     parameter_gt v_kp, parameter_gt v_Ti, parameter_gt v_Td,
     // Current PID controller
     parameter_gt i_kp, parameter_gt i_Ti, parameter_gt i_Td,
-    // valid voltage input range
+    // valid voltage input range,
+    // NOTE vo_min should greater than vin
     parameter_gt vo_min, parameter_gt vo_max,
+    // input filter cut frequency
+    parameter_gt fc,
     // Controller frequency, Hz
     parameter_gt fs)
 {
-    ctl_disable_boost_ctrl(&boost);
+    ctl_disable_boost_ctrl(boost);
 
     ctl_init_pid(
         // continuous PID handle
@@ -73,6 +82,12 @@ void ctl_init_boost_ctrl(
         i_kp, i_Ti, i_Td,
         // controller frequency
         fs);
+
+    ctl_init_lp_filter(&boost->lpf_il, fs, fc);
+    ctl_init_lp_filter(&boost->lpf_ui, fs, fc);
+    ctl_init_lp_filter(&boost->lpf_uo, fs, fc);
+
+    ctl_init_saturation(&boost->modulation_saturation, vo_min, vo_max);
 
     ctl_clear_boost_ctrl(boost);
 }
