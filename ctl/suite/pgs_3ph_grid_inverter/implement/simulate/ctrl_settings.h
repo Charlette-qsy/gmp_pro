@@ -9,7 +9,7 @@
 // BUILD_LEVEL 4: inverter, current loop, feed forward control, negative current control
 // BUILD_LEVEL 5: inverter, current loop, ff, neg, harmonic control
 // BUILD_LEVEL 6: inverter, voltage loop, current loop, ff
-#define BUILD_LEVEL (6)
+#define BUILD_LEVEL (1)
 
 // low voltage half bridge parameters
 #include <ctl/component/digital_power/hardware_preset/gmp_lvhb_v1.h>

@@ -27,6 +27,9 @@
     <ClCompile Include="..\..\implement\common\user_main.c">
       <Filter>implement_common</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\implement\simulate\xplt.peripheral.c">
+      <Filter>implement_interface</Filter>
+    </ClCompile>
     <ClCompile Include="gmp_src\ctl_component_advance.c">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
@@ -43,6 +46,21 @@
       <Filter>GMP Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gmp_src\ctl_component_protection.c">
+      <Filter>GMP Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gmp_src\ctl_dp_basic.c">
+      <Filter>GMP Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gmp_src\ctl_dp_mppt.c">
+      <Filter>GMP Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gmp_src\ctl_dp_single_phase.c">
+      <Filter>GMP Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gmp_src\ctl_dp_three_phase.c">
+      <Filter>GMP Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gmp_src\ctl_dp_topology_sinv.c">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gmp_src\ctl_mc_basic.c">
@@ -63,12 +81,6 @@
     <ClCompile Include="gmp_src\ctl_nano.c">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gmp_src\gmp_mm_block_memory.c">
-      <Filter>GMP Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gmp_src\gmp_std_error_code.c">
-      <Filter>GMP Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="gmp_src\windows_simulink_main.cpp">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
@@ -78,31 +90,22 @@
     <ClCompile Include="gmp_src\gmp_ds_list.c">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gmp_src\gmp_mm_block_memory.c">
+      <Filter>GMP Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="gmp_src\gmp_std_port.c">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\implement\simulate\xplt.peripheral.c">
-      <Filter>implement_interface</Filter>
-    </ClCompile>
-    <ClCompile Include="gmp_src\ctl_dp_basic.c">
-      <Filter>GMP Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gmp_src\ctl_dp_single_phase.c">
-      <Filter>GMP Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gmp_src\ctl_dp_three_phase.c">
-      <Filter>GMP Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gmp_src\ctl_dp_topology_sinv.c">
-      <Filter>GMP Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DigialPower_simulink.cpp">
+    <ClCompile Include="gmp_src\gmp_std_error_code.c">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\component\dsa\src\dsa_trigger.c">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gmp_src\ctl_dp_topology_inv.c">
+    <ClCompile Include="DigialPower_simulink.cpp">
+      <Filter>GMP Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\component\digital_power\src\ctl_dp_topology_inv.c">
       <Filter>GMP Source Files</Filter>
     </ClCompile>
   </ItemGroup>
